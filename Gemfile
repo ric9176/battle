@@ -2,6 +2,6 @@ source "https://rubygems.org"
 
 ruby '2.2.3'
 
-require 'sinatra'
-require 'rspec-sinatra'
-require 'capybara'
+gem 'sinatra'
+gem 'rspec-sinatra'
+gem 'capybara'
