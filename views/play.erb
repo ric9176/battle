@@ -1,10 +1,8 @@
-<%= @player_one_name %> vs <%= @player_two_name %>
-
-<%= @player_two_name %>: 100HP
+<%= @game.player1.name %>: <%= @game.player1.hp %>HP vs <%= @game.player2.name %>: <%= @game.player2.hp %>HP
 
 <form action='/attack' method=post>
   <input type="submit" value="Attack!" name="attack_confirmation">
   <% if @attack_confirmation %>
-    "<%=@player_one_name %> attacks <%= @player_two_name %>"
+    <h1><%=@game.player1.name %> attacks <%= @game.player2.name %></h1>
   <% end %>
 </form>

@@ -1,32 +1,36 @@
 require 'sinatra/base'
+require './lib/player'
+require './lib/game'
 
 class Battle < Sinatra::Base
 
-  configure do
     enable :sessions
-  end
+
 
   get '/' do
     erb :index
   end
 
   post '/names' do
-    session[:player_one_name] = params[:player_one_name]
-    session[:player_two_name] = params[:player_two_name]
+    player1 = Player.new params[:name1]
+    player2 = Player.new params[:name2]
+    $game = Game.new(player1,player2)
     redirect '/play'
-  end
-
-  get '/play' do
-    @player_one_name = session[:player_one_name]
-    @player_two_name = session[:player_two_name]
-    @attack_confirmation = session[:attack_confirmation]
-    erb :play
   end
 
   post '/attack' do
     session[:attack_confirmation] = params[:attack_confirmation]
+    @game = $game
+    @game.attack(@game.player2)
     redirect '/play'
   end
+
+  get '/play' do
+    @game = $game
+    @attack_confirmation = session[:attack_confirmation]
+    erb :play
+  end
+
 
   # start the server if ruby file executed directly
   run! if app_file == $0
