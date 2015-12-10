@@ -1,3 +1,10 @@
 <%= @player_one_name %> vs <%= @player_two_name %>
 
 <%= @player_two_name %>: 100HP
+
+<form action='/attack' method=post>
+  <input type="submit" value="Attack!" name="attack_confirmation">
+  <% if @attack_confirmation %>
+    "<%=@player_one_name %> attacks <%= @player_two_name %>"
+  <% end %>
+</form>
