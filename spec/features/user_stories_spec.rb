@@ -34,4 +34,21 @@ describe 'user stories' do
     end
   end
 
+  # As two Players,
+  # So we can play a personalised game of Battle,
+  # We want to Start a fight by entering our names and seeing them
+
+  feature 'switching turns' do
+    scenario  'Changing attack player' do
+      sign_in_and_play
+      click_button 'Attack!'
+      expect(page).to have_content "Dave attacks Mittens, Mitten's turn to attack"
+    end
+  end
+
+# As two Players,
+# So we can continue our game of Battle,
+# We want to switch turns
+
+
 end

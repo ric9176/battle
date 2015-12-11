@@ -6,6 +6,7 @@ class Game
     @players = [player1, player2]
   end
 
+
   def player1
     @players.first
   end
@@ -16,5 +17,13 @@ class Game
 
   def attack(player)
     player.damage
+    switch
   end
+
+
+private
+  def switch
+    @players.reverse!
+  end
+
 end
