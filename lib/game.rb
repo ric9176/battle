@@ -23,6 +23,10 @@ class Game
   end
 
 
+  def players_alive?
+    players[1].alive
+  end
+
   def switch
     @players.reverse!
   end

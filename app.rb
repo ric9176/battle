@@ -22,13 +22,13 @@ class Battle < Sinatra::Base
     session[:attack_confirmation] = params[:attack_confirmation]
     @game = $game
     @game.attack(@game.player2)
-    redirect '/gameover' unless @game.players[1].alive
+    redirect '/gameover' unless @game.players_alive?
     @game.switch
     redirect '/play'
   end
 
   get "/gameover" do
-  
+
     erb :gameover
   end
 

@@ -1,7 +1,7 @@
 class Player
   ATTACK_AMOUNT = 10
   DEFAULT_HP = 60
-  attr_reader :name, :hp, :alive
+  attr_reader :name, :hp, :alive, :damages
 
 
 
@@ -12,7 +12,8 @@ class Player
   end
 
   def damage
-    @hp -= ATTACK_AMOUNT
+    @damages = Kernel.rand(20)
+    @hp -= @damages
   end
 
 
