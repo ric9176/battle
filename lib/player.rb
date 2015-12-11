@@ -1,7 +1,8 @@
 class Player
-
+  ATTACK_AMOUNT = 10
   DEFAULT_HP = 60
   attr_reader :name, :hp
+
 
 
   def initialize(name, hp = DEFAULT_HP)
@@ -10,7 +11,7 @@ class Player
   end
 
   def damage
-    @hp -= 10
+    @hp -= ATTACK_AMOUNT
   end
 
 end

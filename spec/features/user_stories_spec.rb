@@ -19,7 +19,7 @@ describe 'user stories' do
     scenario 'one player attacks the other' do
     sign_in_and_play
     click_button 'Attack!'
-    expect(page).to have_content 'Dave attacks Mittens'
+    expect(page).to have_content "Dave attacks Mittens, Mittens's turn to attack"
     end
   end
 
@@ -42,7 +42,8 @@ describe 'user stories' do
     scenario  'Changing attack player' do
       sign_in_and_play
       click_button 'Attack!'
-      expect(page).to have_content "Dave attacks Mittens, Mitten's turn to attack"
+      click_button 'Attack!'
+      expect(page).to have_content "Mittens attacks Dave, Dave's turn to attack"
     end
   end
 

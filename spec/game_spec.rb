@@ -1,14 +1,17 @@
-feature 'Reduce HP' do
-  scenario 'Player 1 attacks Player 2 for 10 HP' do
-    sign_in_and_play
-    click_button 'Attack!'
-    expect(page).to have_content 'Mittens: 50HP'
-  end
-end
+require "game"
 
-feature 'switching turns' do
-  scenario 'Player 2 is a able to attack player 1' do
-    sign_in_and_play
-    expect($game.current_turn.name).to eq "Dave"
-  end
+
+describe Game do
+
+let(:player_1) {double :player_1, hp: 666, damage: nil}
+let(:player_2) {double :player_2, hp: 666, damage: nil}
+subject(:game) {described_class.new(player_1, player_2)}
+
+	it "reduces HP after an attack" do
+		expect(player_2).to receive(:damage)
+		game.attack(player_2)
+	end
+
+
+
 end
