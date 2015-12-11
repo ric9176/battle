@@ -27,6 +27,11 @@ class Battle < Sinatra::Base
     redirect '/play'
   end
 
+  get "/gameover" do
+  
+    erb :gameover
+  end
+
   get '/play' do
     @game = $game
     @attack_confirmation = session[:attack_confirmation]
