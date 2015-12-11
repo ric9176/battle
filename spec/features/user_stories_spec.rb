@@ -51,5 +51,13 @@ describe 'user stories' do
 # So we can continue our game of Battle,
 # We want to switch turns
 
+  feature 'winning a game' do
+    scenario 'player beats other player as hit points reach 0' do
+      sign_in_and_play
+      12.times {click_button 'Attack!'}
+      expect(page).to have_content "Dave has killed Mittens"
+     end
+   end
+
 
 end

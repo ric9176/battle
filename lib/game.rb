@@ -1,6 +1,6 @@
 class Game
 
-  attr_reader :player1, :player2
+  attr_reader :player1, :player2, :players
 
   def initialize(player1, player2)
     @players = [player1, player2]
@@ -15,13 +15,14 @@ class Game
     @players.last
   end
 
+
+
   def attack(player)
     player.damage
-    switch
+    player.make_dead if player.hp <= 0
   end
 
 
-private
   def switch
     @players.reverse!
   end
